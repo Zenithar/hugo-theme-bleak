@@ -1,15 +1,14 @@
 {{ partial "header.html" . }}
 
-	<header id="header" class="header has-cover">
+	<header id="header" class="header">
 		<div class="inner">
 			<a class="header-title" href="{{ .Site.BaseURL }}">
 				<h1 class="header-name">{{ .Site.Title }}</h1>
-				{{ if .Params.Subtitle }}
-					<span class="header-description">{{ .Params.Subtitle }}</span>
+				{{ if .Site.Params.Subtitle }}
+					<span class="header-description">{{ .Site.Params.Subtitle }}</span>
 				{{ end }}
 			</a>
 		</div>
-		<div class="header-cover" style="background-image: url(http://zenithar.org/img/head.png)"></div>
 	</header>
 
 	<div id="post-index" class="container">

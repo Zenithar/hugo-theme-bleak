@@ -12,7 +12,7 @@ module.exports = function(grunt) {
             'jsSrcDir': 'src/js',
             'jsTargetDir': 'js',
 			'jsDependencies': [
-				'bower_components/jquery/dist/jquery.min.js',
+				'bower_components/jquery/dist/jquery.js',
 				'bower_components/history.js/scripts/bundled/html4+html5/jquery.history.js',
 				'bower_components/imagesloaded/imagesloaded.pkgd.min.js',
 				'bower_components/masonry/dist/masonry.pkgd.min.js',
