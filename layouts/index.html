@@ -1,0 +1,37 @@
+{{ partial "header.html" . }}
+
+	<header id="header" class="header has-cover">
+		<div class="inner">
+			<a class="header-title" href="{{ .Site.BaseURL }}">
+				<h1 class="header-name">{{ .Site.Title }}</h1>
+				{{ if .Params.Subtitle }}
+					<span class="header-description">{{ .Params.Subtitle }}</span>
+				{{ end }}
+			</a>
+		</div>
+		<div class="header-cover" style="background-image: url(http://zenithar.org/img/head.png)"></div>
+	</header>
+
+	<div id="post-index" class="container">
+
+		<main class="content" role="main">
+
+			<div class="post-list">
+				<div id="push">
+
+			{{ $paginator := .Paginator }}
+
+			{{ range $index, $page := .Paginator.Pages }}
+			  {{ .Render "li" }}
+			{{ end }}
+
+				</div>
+			</div>
+
+			{{ partial "pagination.html" $paginator }}
+
+		</main>
+
+	</div>
+
+{{ partial "footer.html" . }}

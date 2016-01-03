@@ -1,0 +1,21 @@
+# theme.toml template for a Hugo theme
+# See https://github.com/spf13/hugoThemes#themetoml for an example
+
+name = "Bleak"
+license = "MIT"
+licenselink = "https://github.com/Zenithar/hugo-theme-bleak/blob/master/LICENSE.md"
+description = "Bleak crisp theme ported to Hugo"
+homepage = "https://blog.zenithar.org/"
+tags = ["ghost", "minimal"]
+features = ["", ""]
+min_version = 0.16
+
+[author]
+  name = "Thibault NORMAND"
+  homepage = "http://zenithar.org"
+
+# If porting an existing theme
+[original]
+  name = "Peter Amende"
+  homepage = "https://github.com/zutrinken"
+  repo = "https://github.com/zutrinken/bleak"

@@ -1,0 +1,23 @@
+{
+  "name": "hugo-theme-bleak",
+  "version": "1.0.2",
+  "description": "Bleak Hugo Theme",
+  "author": "Thibault NORMAND",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/zenithar/hugo-theme-bleak.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer-core": "^6.0.1",
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.7.0",
+    "grunt-contrib-copy": "^0.8.2",
+    "grunt-contrib-cssmin": "^0.14.0",
+    "grunt-contrib-uglify": "^0.11.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-postcss": "^0.7.1",
+    "grunt-sass": "^1.1.0",
+    "load-grunt-tasks": "^3.4.0"
+  }
+}
