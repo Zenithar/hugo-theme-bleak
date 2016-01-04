@@ -110,14 +110,14 @@ jQuery(function($) {
 	   ========================================================================== */
 
 	function comments() {
-		if (typeof disqus === 'undefined') {
+		if (typeof disqus_shortname === 'undefined') {
 			$('.post-comments').css({
 				'display' : 'none'
 			});
 		} else {
 			$.ajax({
 				type: "GET",
-				url: "//" + disqus + ".disqus.com/embed.js",
+				url: "//" + disqus_shortname + ".disqus.com/embed.js",
 				dataType: "script",
 				cache: true
 			});
