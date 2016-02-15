@@ -110,7 +110,7 @@ jQuery(function($) {
 	   ========================================================================== */
 
 	function comments() {
-		if (typeof disqus_shortname === 'undefined') {
+		if (typeof disqus_shortname === 'undefined' || !document.getElementById('disqus_thread')) {
 			$('.post-comments').css({
 				'display' : 'none'
 			});
