@@ -72,7 +72,7 @@
     {{ end }}
 
     {{ partial "criticalpath.html" . }}
-    
+
     </head>
     <body class="home-template">
       <section id="wrapper">
@@ -91,6 +91,8 @@
               <a class="rss" href="{{.RSSLink}}">
                 <i class="icon-rss"></i>
               </a>
+              {{ if .IsPage }}
               <a class="menu" data-action="menu" data-target="menu"><i class="icon-menu"></i></a>
+              {{ end }}
             </div>
           </nav>
