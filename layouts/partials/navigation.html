@@ -3,7 +3,13 @@
 		<span class="menu-label">Menu</span>
 		<a class="menu-close" data-action="menu" data-target="menu"></a>
 	</div>
+	{{ if .IsPage }}
+		<div id="toc" class="menu-list">
+		{{ .TableOfContents }}
+		</div>
+	{{ else }}
 	<ul class="menu-list">
 	</ul>
+	{{ end }}
 </div>
 <div class="overlay"></div>
