@@ -66,6 +66,15 @@ jQuery(function($) {
 	   ========================================================================== */
 
 	function grid() {
+		$('.post-list .post .post-image img').each(function() {
+			var img = $(this);
+			img.load(function() {
+				img.parents('.post-image').css({
+					'height' : '0',
+					'padding-bottom' : 100 / img.width() * img.height() + '%'
+				});
+			});
+		});
 		var postlist = $('.post-list').masonry({
 			itemSelector			: '.post',
 			isAnimated				: false,
@@ -110,11 +119,21 @@ jQuery(function($) {
 	   ========================================================================== */
 
 	function comments() {
-		if (typeof disqus_shortname === 'undefined') {
+		if (typeof disqus_shortname === 'undefined' || !document.getElementById('disqus_thread')) {
 			$('.post-comments').css({
 				'display' : 'none'
 			});
 		} else {
+			if (window.DISQUS) {
+				return DISQUS.reset({
+					reload: true,
+					config: function () {
+						this.page.identifier = location.pathname;
+						this.page.url = location.origin + location.pathname;
+					}
+				});
+			}
+
 			$.ajax({
 				type: "GET",
 				url: "//" + disqus_shortname + ".disqus.com/embed.js",
