@@ -2,12 +2,17 @@
   "name": "bleak",
   "devDependencies": {
     "fitvids": "~1.1.0",
-    "highlightjs": "~9.0.0",
+    "highlightjs": "~9.2.0",
     "history.js": "~1.8.0",
-    "imagesloaded": "~4.0.0",
+    "imagesloaded": "~4.1.0",
     "jquery": "~2.1.4",
-    "masonry": "~3.3.2",
-    "normalize.css": "~3.0.3",
+    "masonry": "~4.0.0",
+    "normalize.css": "~4.0.0",
     "nprogress": "~0.2.0"
+  },
+  "resolutions": {
+    "get-size": "~2.0.2",
+    "outlayer": "~2.0.0",
+    "fizzy-ui-utils": "~2.0.0"
   }
 }
