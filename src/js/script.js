@@ -263,16 +263,16 @@ jQuery(function($) {
 		}
 
 	    if (loading === false) {
-			var currentState = History.getState();
-			var url = $(this).prop('href');
-			var title = $(this).attr('title') || null;
+				var currentState = History.getState();
+				var url = $(this).prop('href');
+				var title = $(this).attr('title') || null;
 
-	        if (url.replace(/\/$/, "") !== currentState.url.replace(/\/$/, "")) {
-				loading = true;
-				html.addClass('loading');
-				NProgress.start();
-				History.pushState({}, title, url);
-	        }
+		    if (url.replace(/\/$/, "") !== currentState.url.replace(/\/$/, "")) {
+					loading = true;
+					html.addClass('loading');
+					NProgress.start();
+					History.pushState({}, title, url);
+		    }
 	    }
 	});
 
