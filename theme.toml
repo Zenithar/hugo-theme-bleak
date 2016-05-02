@@ -8,7 +8,7 @@ description = "Bleak crisp theme ported to Hugo"
 homepage = "https://blog.zenithar.org/"
 tags = ["ghost", "minimal"]
 features = ["", ""]
-min_version = 0.16
+min_version = 0.15
 
 [author]
   name = "Thibault NORMAND"
