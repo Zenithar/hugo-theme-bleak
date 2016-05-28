@@ -45,24 +45,24 @@
 			</div>
 
 			<nav class="post-nav">
-				{{ if .Next }}
-					<a class="post-nav-item post-nav-next" href="{{ .Next.Permalink }}">
+				{{ if .NextInSection }}
+					<a class="post-nav-item post-nav-next" href="{{ .NextInSection.Permalink }}">
 						<section class="post-nav-teaser">
 							<span class="post-nav-icon"><i class="icon-arrow-left"></i></span>
 							<span class="post-nav-info">
-								<h4 class="post-nav-title">{{ .Next.Title }}</h4>
-								<p class="post-nav-excerpt">{{ .Next.Description }}&hellip;</p>
+								<h4 class="post-nav-title">{{ .NextInSection.Title }}</h4>
+								<p class="post-nav-excerpt">{{ .NextInSection.Description }}&hellip;</p>
 							</span>
 						</section>
 					</a>
 				{{ end }}
-				{{ if .Prev }}
-					<a class="post-nav-item post-nav-prev" href="{{ .Prev.Permalink }}">
+				{{ if .PrevInSection }}
+					<a class="post-nav-item post-nav-prev" href="{{ .PrevInSection.Permalink }}">
 						<section class="post-nav-teaser">
 							<span class="post-nav-icon"><i class="icon-arrow-right"></i></span>
 							<span class="post-nav-info">
-								<h4 class="post-nav-title">{{ .Prev.Title }}</h4>
-								<p class="post-nav-excerpt">{{ .Prev.Description }}&hellip;</p>
+								<h4 class="post-nav-title">{{ .PrevInSection.Title }}</h4>
+								<p class="post-nav-excerpt">{{ .PrevInSection.Description }}&hellip;</p>
 							</span>
 						</section>
 					</a>
