@@ -1,12 +1,19 @@
-{{ if .IsPage }}
+{{ if .Site.Menus.main }}
 <div id="menu" data-target="menu">
-	<div class="menu-header">
-		<span class="menu-label">Menu</span>
-		<a class="menu-close" data-action="menu" data-target="menu"></a>
-	</div>
-	<div id="toc" class="menu-list">
-		{{ .TableOfContents }}
-	</div>
+    <div class="menu-header">
+        <span class="menu-label">Menu</span>
+        <a class="menu-close" data-action="menu" data-target="menu"></a>
+    </div>
+
+    <div class="menu-list">
+        {{ range .Site.Menus.main }}
+        {{ $currentNode := . }}
+        <li class="menu-list-item">
+            {{ .Pre }}
+            <a class="home current js-ajax-link" href="{{ .URL }}">{{ .Name }}</a>
+        </li>
+        {{ end }}
+    </div>
+
 </div>
-<div class="overlay"></div>
 {{ end }}

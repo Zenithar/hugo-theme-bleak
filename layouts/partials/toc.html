@@ -1,0 +1,11 @@
+{{ if .IsPage }}
+<div id="tocMenu" data-target="toc">
+    <div class="menu-header">
+        <span class="menu-label">Menu</span>
+        <a class="menu-close" data-action="toc" data-target="toc"></a>
+    </div>
+    <div id="toc" class="menu-list">
+        {{ .TableOfContents }}
+    </div>
+</div>
+{{ end }}
