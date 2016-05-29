@@ -7,7 +7,7 @@ jQuery(function($) {
 	   Menu Function
 	   ========================================================================== */
 
-	body.on('click', '[data-action="menu"]', function() {
+	body.on('click', '[data-action="menu"], [data-action="toc"]', function() {
 		var action = $(this).data('action');
 		var target = $('[data-target="' + $(this).data('target') + '"]').not('[data-action]');
 		menu(target)
@@ -34,9 +34,23 @@ jQuery(function($) {
 		}
 	}
 
-	body.on('click', '.overlay, #menu a', function() {
+	body.on('click', '#menu a', function() {
 		if (html.hasClass('menu-active')) {
 			var target = $('[data-target="menu"]').not('[data-action]');
+			menu(target);
+		}
+	});
+
+	body.on('click', '#tocMenu a', function() {
+		if (html.hasClass('menu-active')) {
+			var target = $('[data-target="toc"]').not('[data-action]');
+			menu(target);
+		}
+	});
+
+	body.on('click', '.overlay', function() {
+		if (html.hasClass('menu-active')) {
+			var target = $('[data-target="menu"].active,[data-target="toc"].active').not('[data-action]');
 			menu(target);
 		}
 	});

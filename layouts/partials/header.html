@@ -68,6 +68,18 @@
         "description": "{{ .Description }}",
         "wordCount": {{ .WordCount }}
     }
+
+    </script>
+
+    <script type="text/javascript">
+    {{ $doc := . }}
+    {{ with .Site.Params.disqus }}
+      var disqus_shortname = '{{ . }}';
+      var disqus_identifier = '{{if isset $doc.Params "disqus_identifier" }}{{ index $doc.Params "disqus_identifier" }}{{ else }}{{ $doc.Permalink }}{{end}}';
+      var disqus_title = '{{if isset $doc.Params "disqus_title" }}{{ index $doc.Params "disqus_title" }}{{ else }}{{ $doc.Title }}{{end}}';
+      var disqus_url = '{{if isset $doc.Params "disqus_url" }}{{ index $doc.Params "disqus_url" | html  }}{{ else }}{{ $doc.Permalink }}{{end}}';
+    {{ end }}
+
     </script>
     {{ end }}
 
@@ -80,19 +92,24 @@
           <nav id="nav" class="nav">
             <div class="nav-logo">
               <a href="{{ .Site.BaseURL }}">
-                {{ if isset .Site.Params "logo" }}
-                <img src="{{ .Site.Params.logo }}" alt="Logo" />
-                {{ else }}
-                <img src="https://www.gravatar.com/avatar/1a2807faf3cca1667ff6f04bf5886eff.png" alt="Logo" />
-                {{ end }}
               </a>
+			  	{{ with .Site.Params }}
+			  	{{ if .logo }}
+			  	<img src="{{ .logo }}" alt="Logo"/>
+			  	{{ else if .gravatarHash }}
+				<img src="https://www.gravatar.com/avatar/{{ .gravatarHash }}.png?s=32" alt="Logo"/>
+			  	{{ end }}
+			  	{{ end }}
             </div>
             <div class="nav-menu">
               <a class="rss" href="{{.RSSLink}}">
                 <i class="icon-rss"></i>
               </a>
-              {{ if .IsPage }}
-              <a class="menu" data-action="menu" data-target="menu"><i class="icon-menu"></i></a>
-              {{ end }}
+                {{ if .IsPage }}
+                <a class="menu" data-action="toc" data-target="toc"><i class="icon-location"></i></a>
+                {{ end }}
+                {{ if .Site.Menus.main }}
+                <a class="menu" data-action="menu" data-target="menu"><i class="icon-menu"></i></a>
+                {{ end }}
             </div>
           </nav>
