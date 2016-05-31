@@ -92,14 +92,14 @@
           <nav id="nav" class="nav">
             <div class="nav-logo">
               <a href="{{ .Site.BaseURL }}">
+      			  	{{ with .Site.Params }}
+      			  	{{ if .logo }}
+      			  	<img src="{{ .logo }}" alt="Logo"/>
+      			  	{{ else if .gravatarHash }}
+      				  <img src="https://www.gravatar.com/avatar/{{ .gravatarHash }}.png?s=32" alt="Logo"/>
+      			  	{{ end }}
               </a>
-			  	{{ with .Site.Params }}
-			  	{{ if .logo }}
-			  	<img src="{{ .logo }}" alt="Logo"/>
-			  	{{ else if .gravatarHash }}
-				<img src="https://www.gravatar.com/avatar/{{ .gravatarHash }}.png?s=32" alt="Logo"/>
-			  	{{ end }}
-			  	{{ end }}
+			  	    {{ end }}
             </div>
             <div class="nav-menu">
               <a class="rss" href="{{.RSSLink}}">
