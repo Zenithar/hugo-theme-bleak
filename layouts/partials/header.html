@@ -68,7 +68,6 @@
         "description": "{{ .Description }}",
         "wordCount": {{ .WordCount }}
     }
-
     </script>
 
     <script type="text/javascript">
@@ -79,7 +78,6 @@
       var disqus_title = '{{if isset $doc.Params "disqus_title" }}{{ index $doc.Params "disqus_title" }}{{ else }}{{ $doc.Title }}{{end}}';
       var disqus_url = '{{if isset $doc.Params "disqus_url" }}{{ index $doc.Params "disqus_url" | html  }}{{ else }}{{ $doc.Permalink }}{{end}}';
     {{ end }}
-
     </script>
     {{ end }}
 
@@ -92,14 +90,12 @@
           <nav id="nav" class="nav">
             <div class="nav-logo">
               <a href="{{ .Site.BaseURL }}">
-      			  	{{ with .Site.Params }}
-      			  	{{ if .logo }}
+      			  {{ if .Site.Params.logo }}
       			  	<img src="{{ .logo }}" alt="Logo"/>
-      			  	{{ else if .gravatarHash }}
-      				  <img src="https://www.gravatar.com/avatar/{{ .gravatarHash }}.png?s=32" alt="Logo"/>
-      			  	{{ end }}
+      			  {{ else if .Site.Params.gravatarHash }}
+      				  <img src="https://www.gravatar.com/avatar/{{ .Site.Params.gravatarHash }}.png?s=32" alt="Logo"/>
+      			  {{ end }}
               </a>
-			  	    {{ end }}
             </div>
             <div class="nav-menu">
               <a class="rss" href="{{.RSSLink}}">
