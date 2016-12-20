@@ -28,6 +28,17 @@
 
         <title>{{ if ne .URL "/" }} {{ .Title }} &middot; {{ end }} {{ .Site.Title }}</title>
 
+        <link rel="preload" href="/js/dependencies.js" as="script" />
+        <link rel="preload" href="/css/dependencies.css" as="style" />
+        <link rel="preload" href="/css/style.css" as="style" />
+        <link rel="preload" href="/js/script.js" as="script" />
+
+    {{ if .IsNode }}
+    {{ if .Site.Params.cover }}
+        <link rel="preload" href="{{ .Site.Params.cover }}" as="image" />
+    {{ end }}
+    {{ end }}
+
     {{ if .Description }}
         <meta name="description" content="{{ .Description }}" />
     {{ else }}
@@ -83,9 +94,14 @@
 
     {{ partial "criticalpath.html" . }}
 
+    <link rel="stylesheet" href="/css/dependencies.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     </head>
-    <body class="home-template" style="display: none;">
-      <section id="wrapper">
+    <body class="home-template">
+      <div id="loader-wrapper">
+        <div id="loader"></div>
+      </div>
+      <section id="wrapper" style="display: none;">
         <div id="ajax-container">
           <nav id="nav" class="nav">
             <div class="nav-logo">

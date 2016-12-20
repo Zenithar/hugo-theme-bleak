@@ -303,4 +303,8 @@ jQuery(function($) {
         }, 1);
     });
 
+    $(document).ready( function() {
+        $('#loader-wrapper').fadeOut(300);
+        $('#wrapper').fadeIn(800);
+    });
 });
