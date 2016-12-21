@@ -89,6 +89,10 @@ module.exports = function(grunt) {
                 files: {
                     'static/<%= config.cssTargetDir %>/dependencies.css': [
                         '<%= config.cssDependencies %>'
+                    ],
+                    'static/<%= config.cssTargetDir %>/main.css': [
+                        '<%= config.cssDependencies %>',
+                        'static/<%=  config.cssTargetDir %>/style.css'
                     ]
                 }
             }
@@ -131,6 +135,10 @@ module.exports = function(grunt) {
                     ],
                     'static/<%= config.jsTargetDir %>/dependencies.js': [
                         '<%= config.jsDependencies %>'
+                    ],
+                    'static/<%= config.jsTargetDir %>/main.js': [
+                        '<%= config.jsDependencies %>',
+                        '<%= config.jsSrcDir %>/**/*.js'
                     ]
                 }
             }

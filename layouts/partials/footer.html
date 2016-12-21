@@ -11,9 +11,7 @@
 			</div>
 		</section>
 
-    <script src="/js/dependencies.js"></script>
-		<script async src="/js/script.js"></script>
-</script>
+    <script async src="/js/main.js"></script>
 
 {{ if .Site.Params.googleAnalyticsUserID }}
     {{with .Site.Params.googleAnalyticsUserID }}
@@ -26,7 +24,8 @@
         ga('send', 'pageview');
     </script>
     {{ end }}
-{{ else if .Site.Params.googleTagManagerID }}
+{{ end }}
+{{ if .Site.Params.googleTagManagerID }}
     {{with .Site.Params.googleTagManagerID }}
     <noscript>
         <iframe src="//www.googletagmanager.com/ns.html?id={{ . }}" height="0" width="0"
@@ -43,3 +42,5 @@
 
 </body>
 </html>
+
+<link rel="stylesheet" href="/css/main.css" />
