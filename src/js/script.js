@@ -134,31 +134,37 @@ jQuery(function($) {
        ========================================================================== */
 
     function comments() {
+        if (window.location.hostname == "localhost")
+          return;
+
         if (typeof disqus_shortname === 'undefined' || !document.getElementById('disqus_thread')) {
             $('.post-comments').hide();
         } else {
             if (window.DISQUS) {
-								var url = location.origin + location.pathname;
+                $('.post-comments').show();
+
+								var url = location.href;
 								if(url.slice(-1) !== '/') {
 									url = url + '/';
 								}
                 return DISQUS.reset({
                     reload: true,
                     config: function() {
-                        this.page.identifier = location.pathname;
+                        this.page.identifier = url;
                         this.page.url = url;
                     }
                 });
+            } else {
+              // Lazy script loading
+              $.ajax({
+                  type: "GET",
+                  url: "//" + disqus_shortname + ".disqus.com/embed.js",
+                  dataType: "script",
+                  cache: true
+              }).done(function() {
+  							comments();
+  						});
             }
-
-            $.ajax({
-                type: "GET",
-                url: "//" + disqus_shortname + ".disqus.com/embed.js",
-                dataType: "script",
-                cache: false
-            }).done(function() {
-							$('.post-comments').show();
-						});
         }
     }
     comments();

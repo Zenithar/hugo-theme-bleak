@@ -65,7 +65,7 @@
     {{end}}
         <link rel="canonical" href="{{ .Permalink }}" />
 
-    {{ if .IsPage }}
+{{ if .IsPage }}
     <script type="application/ld+json">
     {
         "@context": "http://schema.org",
@@ -80,7 +80,9 @@
         "wordCount": {{ .WordCount }}
     }
     </script>
+{{ end }}
 
+    {{ if ne .Params.comments false}}
     <script type="text/javascript">
     {{ $doc := . }}
     {{ with .Site.Params.disqus }}
