@@ -1,8 +1,4 @@
 <aside class="post-comments">
-    {{ if ne .Params.comments false}}
-    {{ with .Site.Params.disqus }}
-    <div id="disqus_thread"></div>
+    {{ template "_internal/disqus.html" . }}
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    {{ end }}
-    {{ end }}
 </aside>
