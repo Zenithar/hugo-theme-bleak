@@ -190,6 +190,7 @@ jQuery(function($) {
         comments();
         gist();
         currentMenuFix();
+        blurUpImages();
     }
 
     /* ==========================================================================
@@ -223,6 +224,24 @@ jQuery(function($) {
         });
     }
     ajaxLinkClass();
+
+    /* ==========================================================================
+       Blur up images
+       ========================================================================== */
+
+    function blurUpImages() {
+      $('.blured-image').each(function() {
+        var el = $(this);
+
+        // Load new image
+        var newImage = new Image();
+        newImage.onload = function() {
+          el.css('background-image', 'url(' + newImage.src + ')').addClass('blurUp').removeClass("filter-blur-15");
+        }
+        newImage.src = el.data('src');
+      });
+    }
+    blurUpImages();
 
     /* ==========================================================================
        Ajax Loading
