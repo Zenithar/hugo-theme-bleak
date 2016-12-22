@@ -251,6 +251,23 @@ jQuery(function($) {
     var loading = false;
     var ajaxContainer = $('#ajax-container');
 
+    $(document).ready( function() {
+      // Async CSS loader for making PageSpeed happy !
+      var stylesheet = document.createElement('link');
+      stylesheet.href = '/css/main.css';
+      stylesheet.rel = 'stylesheet';
+      stylesheet.type = 'text/css';
+      // temporarily set media to something inapplicable to ensure it'll fetch without blocking render
+      stylesheet.media = 'bogus';
+      // set the media back when the stylesheet loads
+      stylesheet.onload = function() {stylesheet.media = 'all'}
+      document.getElementsByTagName('head')[0].appendChild(stylesheet);
+
+      // Fade out
+      $('#loader-wrapper').fadeOut(300);
+      $('#wrapper').fadeIn(800);
+    });
+
     if (!History.enabled) {
         return false;
     }
@@ -287,6 +304,7 @@ jQuery(function($) {
             });
         });
     });
+
     $('body').on('click', '.js-ajax-link', function(e) {
         e.preventDefault();
 
@@ -328,8 +346,4 @@ jQuery(function($) {
         }, 1);
     });
 
-    $(document).ready( function() {
-        $('#loader-wrapper').fadeOut(300);
-        $('#wrapper').fadeIn(800);
-    });
 });
