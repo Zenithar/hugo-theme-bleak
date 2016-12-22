@@ -118,7 +118,7 @@ jQuery(function($) {
             code.parent().addClass('codeblock').append('<div class="lines">' + numbers + '</div>');
         });
     }
-    highlight();
+    //highlight();
 
     /* ==========================================================================
        Fitvids
@@ -185,7 +185,7 @@ jQuery(function($) {
     function reload() {
         grid();
         ajaxLinkClass();
-        highlight();
+        //highlight();
         video();
         comments();
         gist();
