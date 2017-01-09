@@ -31,6 +31,10 @@
         <link rel="preload" href="/js/main.js" as="script" />
         <link rel="preload" href="/css/main.css" as="style" />
 
+        {{ range .Site.Params.custom_css }}
+          <link rel="stylesheet" href="{{ $.Site.BaseURL }}{{ . }}">
+        {{ end }}
+
     {{ if .Description }}
         <meta name="description" content="{{ .Description }}" />
     {{ else }}
