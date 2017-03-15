@@ -17,8 +17,8 @@
         {{ end }}
 
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@{{ .Site.Params.twitter }}" />
-        <meta name="twitter:creator" content="@{{ .Site.Params.twitter }}" />
+        <meta name="twitter:site" content="@{{ .Site.Params.author.twitter }}" />
+        <meta name="twitter:creator" content="@{{ .Site.Params.author.twitter }}" />
         <meta name="twitter:title" content="{{ .Title }}" />
         <meta name="twitter:description" content="{{ .Description }}" />
         <meta name="twitter:url" content="{{ .Permalink }}" />
@@ -37,7 +37,10 @@
         <meta name="description" content="{{ .Site.Params.description }}" />
     {{ end }}
 
-        <meta name="p:domain_verify" content="fc173d84e3a4de948ed4bda2908afd3e"/>
+    {{ if ne .Site.Params.domainVerification "" }}
+        <meta name="p:domain_verify" content="{{ .Site.Params.domainVerification }}"/>
+    {{ end }}
+
         <meta name="HandheldFriendly" content="True" />
         <meta name="MobileOptimized" content="320" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -58,18 +61,56 @@
         <link rel="canonical" href="{{ .Permalink }}" />
 
 {{ if .IsPage }}
+    {{ $last := sub (len .Params.tags) 1 }}
     <script type="application/ld+json">
     {
         "@context": "http://schema.org",
-        "@type": "Article",
-        "headline": "{{ .Title }}",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "{{ .Permalink | safeJS }}"
+        },
+        "headline": "{{ .Title | safeJS}}",
+        "description": "{{ printf "%s" .Description }}",
         "author": {
             "@type": "Person",
-            "name": "http://profiles.google.com/{{ .Site.Params.gplus }}?rel=author"
+            "name": "{{ .Site.Params.author.firstName | safeJS }} {{ .Site.Params.author.lastName | safeJS }}",
+            "url": "http://profiles.google.com/{{ .Site.Params.author.gplus }}?rel=author",
+            "image": {
+              "@type": "ImageObject",
+              "url": "https:{{ .Site.Params.author.image | safeJS }}",
+              "height": 80,
+              "width": 80
+            }
         },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "{{ .Site.BaseURL }}",
+          "name": "{{ .Site.Title | safeJS }}",
+          "url": "{{ .Site.BaseURL }}",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https:{{ .Site.Params.author.image | safeJS }}",
+            "height": 80,
+            "width": 80
+          }
+        },
+        {{ if .Params.image }}"image": {
+          "@type": "ImageObject",
+          "url": "{{ absURL .Params.image | safeJS }}",
+          "height": 133,
+          "width": 200
+        },{{ else }}
+        "image": {
+          "@type": "ImageObject",
+          "url": "{{ .Site.Params.author.image | safeJS }}",
+          "height": 80,
+          "width": 80
+        },{{ end }}
         "datePublished": "{{ .Date.Format "2006-01-02" }}",
-        "description": "{{ .Description }}",
-        "wordCount": {{ .WordCount }}
+        "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
+        "wordCount": {{ .WordCount }},
+        "keywords": {{ .Params.tags | jsonify }}
     }
     </script>
 {{ end }}
