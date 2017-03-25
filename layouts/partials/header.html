@@ -74,11 +74,11 @@
         "description": "{{ printf "%s" .Description }}",
         "author": {
             "@type": "Person",
-            "name": "{{ .Site.Params.author.firstName | safeJS }} {{ .Site.Params.author.lastName | safeJS }}",
+            "name": "{{ .Site.Params.author.firstName }} {{ .Site.Params.author.lastName }}",
             "url": "http://profiles.google.com/{{ .Site.Params.author.gplus }}?rel=author",
             "image": {
               "@type": "ImageObject",
-              "url": "https:{{ .Site.Params.author.image | safeJS }}",
+              "url": "https:{{ .Site.Params.author.image }}",
               "height": 80,
               "width": 80
             }
@@ -86,24 +86,24 @@
         "publisher": {
           "@type": "Organization",
           "@id": "{{ .Site.BaseURL }}",
-          "name": "{{ .Site.Title | safeJS }}",
+          "name": "{{ .Site.Title }}",
           "url": "{{ .Site.BaseURL }}",
           "logo": {
             "@type": "ImageObject",
-            "url": "https:{{ .Site.Params.author.image | safeJS }}",
+            "url": "https:{{ .Site.Params.author.image }}",
             "height": 80,
             "width": 80
           }
         },
         {{ if .Params.image }}"image": {
           "@type": "ImageObject",
-          "url": "{{ absURL .Params.image | safeJS }}",
+          "url": "{{ absURL .Params.image }}",
           "height": 133,
           "width": 200
         },{{ else }}
         "image": {
           "@type": "ImageObject",
-          "url": "{{ .Site.Params.author.image | safeJS }}",
+          "url": "{{ .Site.Params.author.image }}",
           "height": 80,
           "width": 80
         },{{ end }}
