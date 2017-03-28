@@ -141,8 +141,8 @@
               <a href="{{ .Site.BaseURL }}">
       			  {{ if .Site.Params.logo }}
       			  	<img src="{{ .Site.Params.logo }}" alt="Logo"/>
-      			  {{ else if .Site.Params.gravatarHash }}
-      				  <img src="https://www.gravatar.com/avatar/{{ .Site.Params.gravatarHash }}.png?s=32" alt="Logo"/>
+      			  {{ else if .Site.Params.author.gravatarHash }}
+      				  <img src="https://www.gravatar.com/avatar/{{ .Site.Params.author.gravatarHash }}.png?s=32" alt="Logo"/>
       			  {{ end }}
               </a>
             </div>

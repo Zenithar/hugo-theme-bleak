@@ -14,6 +14,34 @@ Theme based from Ghost [Bleak](https://github.com/zutrinken/bleak) by [zuntrinke
 
 [Blog](http://bleak.zutrinken.com)
 
+## Config
+
+```toml
+[params]
+  # Warning Keys are case sensitives
+  Subtitle = "Your subtitle !"
+  description = "Everything is awesome !"
+  cover = "/images/cover.jpg"
+
+  # Google analytics
+  googleAnalyticsUserID = "UA-xxxxxxxx-x"
+  domainVerification = "xxxxxxxxxxxxxxxxxxxxx"
+  disqus = "xxxxxxxxx"
+
+  [params.author]
+    firstName = "FirstName"
+    lastName = "LastName"
+    gender = "(fe)?male"
+    userName = "username"
+    image = "//www.gravatar.com/avatar/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.png"
+    website = "http://www.foo.com"
+    twitter = "xxxxxxx"
+    github = "xxxxxxx"
+    facebook = "xxxxxxxxx"
+    linkedin = "xxxxxxxxx"
+    gplus = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    gravatarHash = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+```
 
 ## Development
 
