@@ -127,6 +127,12 @@
     </script>
     {{ end }}
 
+    <script type="text/javascript">
+      var config = {
+        baseUrl: "{{ .Site.BaseURL }}"
+      };
+    </script>
+
     {{ partial "criticalpath.html" . }}
 
     </head>
