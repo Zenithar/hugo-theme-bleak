@@ -28,8 +28,8 @@
 
         <title>{{ if ne .URL "/" }} {{ .Title }} &middot; {{ end }} {{ .Site.Title }}</title>
 
-        <link rel="preload" href="/js/main.js" as="script" />
-        <link rel="preload" href="/css/main.css" as="style" />
+        <link rel="preload" href="{{ .Site.BaseURL }}/js/main.js" as="script" />
+        <link rel="preload" href="{{ .Site.BaseURL }}/css/main.css" as="style" />
 
     {{ if .Description }}
         <meta name="description" content="{{ .Description }}" />
@@ -126,6 +126,12 @@
     {{ end }}
     </script>
     {{ end }}
+
+    <script type="text/javascript">
+      var config = {
+        baseUrl: "{{ .Site.BaseURL }}"
+      };
+    </script>
 
     {{ partial "criticalpath.html" . }}
 
