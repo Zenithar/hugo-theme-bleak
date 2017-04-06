@@ -254,7 +254,7 @@ jQuery(function($) {
     $(document).ready( function() {
       // Async CSS loader for making PageSpeed happy !
       var stylesheet = document.createElement('link');
-      stylesheet.href = '/css/main.css';
+      stylesheet.href = config.baseUrl + 'css/main.css';
       stylesheet.rel = 'stylesheet';
       stylesheet.type = 'text/css';
       // temporarily set media to something inapplicable to ensure it'll fetch without blocking render
