@@ -27,7 +27,7 @@
 				</div>
 			</div>
 
-			{{ partial "pagination.html" $paginator }}
+			{{ partial "pagination.html" (dict "paginator" $paginator "site" .Site ) }}
 
 		</main>
 
