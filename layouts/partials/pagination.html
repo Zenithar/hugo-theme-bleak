@@ -1,11 +1,13 @@
 <nav id="pagination" class="pagination" role="pagination">
 	<div class="inner">
-	{{if .HasPrev}}
-	  <a class="pagination-item pagination-next" href="{{ .Prev.URL }}"><i class="icon-arrow-left"></i> <span>Newer Posts</span></a>
+	{{if .paginator.HasPrev}}
+		{{ $prevUrl := delimit (slice .site.BaseURL .paginator.Prev.URL) "" }}
+	  <a class="pagination-item pagination-next" href="{{ $prevUrl }}"><i class="icon-arrow-left"></i> <span>Newer Posts</span></a>
 	{{end}}
-		<span class="pagination-info">Page {{ .PageNumber }} of {{.TotalPages}}</span>
-	{{if .HasNext}}
-	  <a class="pagination-item pagination-prev" href="{{ .Next.URL }}"><span>Older Posts</span> <i class="icon-arrow-right"></i></a>
+		<span class="pagination-info">Page {{ .paginator.PageNumber }} of {{.paginator.TotalPages}}</span>
+	{{if .paginator.HasNext}}
+		{{ $nextUrl := delimit (slice .site.BaseURL .paginator.Next.URL) "" }}
+	  <a class="pagination-item pagination-prev" href="{{ $nextUrl }}"><span>Older Posts</span> <i class="icon-arrow-right"></i></a>
 	{{end}}
 		<div class="clear"></div>
 	</div>
