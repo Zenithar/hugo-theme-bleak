@@ -61,9 +61,6 @@
         <link rel="canonical" href="{{ .Permalink }}" />
 
 {{ if .IsPage }}
-    {{ if .Params.tags}}
-        {{ $last := sub (len .Params.tags) 1 }}
-    {{ end }}
     <script type="application/ld+json">
     {
         "@context": "http://schema.org",
