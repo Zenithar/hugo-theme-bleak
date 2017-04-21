@@ -61,7 +61,6 @@
         <link rel="canonical" href="{{ .Permalink }}" />
 
 {{ if .IsPage }}
-    {{ $last := sub (len .Params.tags) 1 }}
     <script type="application/ld+json">
     {
         "@context": "http://schema.org",
@@ -110,7 +109,7 @@
         "datePublished": "{{ .Date.Format "2006-01-02" }}",
         "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
         "wordCount": {{ .WordCount }},
-        "keywords": {{ .Params.tags | jsonify }}
+        {{ if .Params.tags }}"keywords": {{ .Params.tags | jsonify }} {{ end }}
     }
     </script>
 {{ end }}
