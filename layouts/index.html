@@ -10,7 +10,7 @@
 			</a>
 		</div>
 		{{ if .Site.Params.cover }}
-		<div class="header-cover blured-image" style="background-color: darkgreen; background-image: url(/images/cover.low.jpg)" data-src="{{ .Site.Params.cover }}"></div>
+		<div class="header-cover blured-image" style="background-color: #19a0d7; background-image: url(/images/cover.low.jpg)" data-src="{{ .Site.Params.cover }}"></div>
 		{{ end }}
 	</header>
 
@@ -21,7 +21,7 @@
 			<div class="post-list">
 				<div id="push">
 
-			{{ $paginator := .Paginate (where .Data.Pages "Type" "post") }}
+            {{ $paginator := .Paginate (where .Site.Pages "Section" "in" .Site.Params.mainSections) }}
 
 			{{ range $index, $page := $paginator.Pages }}
 			  {{ .Render "li" }}

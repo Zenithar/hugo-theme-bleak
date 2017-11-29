@@ -1,18 +1,25 @@
 				<div id="body-class" style="display: none;"></div>
 				<footer id="footer">
 					<section class="credits">
-						<span class="credits-theme">Theme <a href="https://github.com/zenithar/hugo-theme-bleak" target="_blank" rel="nofollow">Bleak</a> by <a href="http://zutrinken.com" target="_blank" rel="nofollow">zutrinken</a></span>
-						<span class="credits-software">Published with <a href="http://gohugo.io" target="_blank" rel="nofollow">Hugo</a></span>
+						<span class="credits-theme">Tema basado en <a
+                                href="https://github.com/zenithar/hugo-theme-bleak"
+                                target="_blank" rel="nofollow">Bleak</a> por <a href="http://zutrinken.com" target="_blank" rel="nofollow">zutrinken</a></span>
+                        {{ if .Site.Params.license }}
+                        <span class="credits-license"><i class="fa fa-copyright"></i> 2013-{{ now.Year }} {{ .Site.Title }} — Licencia {{ htmlUnescape .Site.Params.license | safeHTML }}</span>
+                        {{ end }}
+						<span class="credits-software">Publicado con <a href="http://gohugo.io" target="_blank" rel="nofollow">Hugo</a></span>
 					</section>
 				</footer>
+				{{ partial "subscription.html" . }}
 				{{ partial "navigation.html" . }}
-				{{ partial "toc.html" . }}
+                {{ if .Params.showToc }}
+                    {{ partial "toc.html" . }}
+                {{ end }}
 				<div class="overlay"></div>
 			</div>
 		</section>
 
-    <script async src="{{ .Site.BaseURL }}js/main.js"></script>
-
+    <script async src="/js/main.js"></script>
 {{ if .Site.Params.googleAnalyticsUserID }}
     {{with .Site.Params.googleAnalyticsUserID }}
     <script>
@@ -40,6 +47,6 @@
     {{ end }}
 {{ end }}
 
-  <noscript><link rel="stylesheet" href="{{ .Site.BaseURL }}css/main.css"></noscript>
+  <noscript><link rel="stylesheet" href="/css/main.css"></noscript>
 </body>
 </html>
