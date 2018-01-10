@@ -1139,32 +1139,20 @@ body {
 	}
 
 	.credits {
+		font-size: 0.80em;
 		text-align: center;
-		font-size: 1em;
 		line-height: 1.334em;
 		padding: 2.667em;
 		overflow: auto;
 
 		span {
 			display: block;
+      max-width: 50%;
 		}
-
-		.credits-theme {
-			float: left;
-		}
-
-		.credits-software {
-			float: right;
-		}
-
-		@media only screen and (max-width: $breakpoint-tablet) {
-      .credits-theme, .credits-software {
-          display: none;
-      }
-    }
 
     .credits-license {
-      display: inline;
+      float: left;
+		  text-align: left;
 
       .fa {
         color: $color-gray-50;
@@ -1176,6 +1164,23 @@ body {
         }
       }
     }
+
+		.credits-software {
+			float: right;
+		  text-align: right;
+		}
+
+		@media only screen and (max-width: $breakpoint-tablet) {
+      .credits-software {
+          display: none;
+      }
+      .credits-license {
+        float: none !important;
+		    text-align: center !important;
+        max-width: 100% !important;
+      }
+    }
+
 	}
 }
 
