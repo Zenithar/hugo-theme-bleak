@@ -2,77 +2,82 @@
 {{ partial "header.html" . }}
 
 <main class="content" role="main">
-	<article class="post">
-		<div class="inner">
+    <article class="post">
+        <div class="inner">
 
-			<div id="push">
+            <div id="push">
 
-  			<header class="post-header">
-  				<span class="post-meta">
-						<span class="post-date">{{ .Date.Format "2 Jan 2006" }}</span> <span class="reading-time">| <span class="estimated-reading-time">{{ .ReadingTime }} min.</span> (<span class="word-count">{{ .WordCount }}</span> palabras)</span></span>
-  				</span>
-  				<div class="clear"></div>
-  				<h1 class="post-title">{{ .Title }}</h1>
-  			</header>
+              <header class="post-header">
+                <span class="post-meta">
+                    {{ if ne .Type "page" }}
+                        <span class="post-date">{{ .Date.Format "2 Jan 2006" }}</span> <span class="reading-time">| <span class="estimated-reading-time">{{ .ReadingTime }} min.</span> (<span class="word-count">{{ .WordCount }}</span> palabras)</span></span>
+                    {{ end }}
+                </span>
+                  <div class="clear"></div>
+                  <h1 class="post-title">{{ .Title }}</h1>
+              </header>
 
-  			<section class="post-content">
-                {{if .Params.audio }}
+              <section class="post-content">
+                {{ if .Params.audio }}
                     <audio controls="" class="podcast-player">
                         <source src="{{ $.Site.Params.podcast.audioBaseUrl }}{{ .Params.audio }}" type="audio/mpeg" />
                         <a href="{{ $.Site.Params.podcast.audioBaseUrl }}{{ .Params.audio }}">{{ .Title }}</a>
                     </audio>
                 {{ end }}
-  				{{ .Content }}
-  			</section>
+                  {{ .Content }}
+              </section>
 
-  			<footer class="post-footer">
-  				<div class="post-tags">
-            {{if .Params.tags }}
+              <footer class="post-footer">
+                  <div class="post-tags">
+            {{ if .Params.tags }}
             {{ range $index, $tag := .Params.tags }}
                 <a href="{{ $baseurl }}tags/{{ $tag | urlize }}.html">{{ $tag }}</a>
             {{ end }}
             {{ end }}
-  				</div>
-  				<div class="post-share">
-  					<a class="fa fa-twitter" href="https://twitter.com/share?text={{ .Title }}&url={{ .Permalink }}" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-  						<span>Twitter</span>
-  					</a>
-                    <a class="fa fa-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ .Permalink }}&title={{ .Title }}&summary={{ .Summary }}" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=550');return false;">
-                        <span>LinkedIn</span>
-  					</a>
-  				</div>
-  			</footer>
+                  </div>
+                {{ if ne .Type "page" }}
+                    <div class="post-share">
+                        <a class="fa fa-twitter" href="https://twitter.com/share?text={{ .Title }}&url={{ .Permalink }}" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                            <span>Twitter</span>
+                        </a>
+                        <a class="fa fa-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ .Permalink }}&title={{ .Title }}&summary={{ .Summary }}" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=550');return false;">
+                            <span>LinkedIn</span>
+                        </a>
+                    </div>
+            {{ end }}
+              </footer>
 
-  			{{ partial "comments.html" . }}
+            {{ if ne .Type "page" }}
+                {{ partial "comments.html" . }}
+            {{ end }}
+            </div>
 
-			</div>
+            <nav class="post-nav">
+                {{ if .NextInSection }}
+                    <a class="post-nav-item post-nav-next" href="{{ .NextInSection.Permalink }}">
+                        <section class="post-nav-teaser">
+                            <span class="post-nav-icon"><i class="fa fa-chevron-left"></i></span>
+                            <span class="post-nav-info">
+                                <h4 class="post-nav-title">{{ .NextInSection.Title }}</h4>
+                            </span>
+                        </section>
+                    </a>
+                {{ end }}
+                {{ if .PrevInSection }}
+                    <a class="post-nav-item post-nav-prev" href="{{ .PrevInSection.Permalink }}">
+                        <section class="post-nav-teaser">
+                            <span class="post-nav-icon"><i class="fa fa-chevron-right"></i></span>
+                            <span class="post-nav-info">
+                                <h4 class="post-nav-title">{{ .PrevInSection.Title }}</h4>
+                            </span>
+                        </section>
+                    </a>
+                {{ end }}
+                <div class="clear"></div>
+            </nav>
 
-			<nav class="post-nav">
-				{{ if .NextInSection }}
-					<a class="post-nav-item post-nav-next" href="{{ .NextInSection.Permalink }}">
-						<section class="post-nav-teaser">
-							<span class="post-nav-icon"><i class="fa fa-chevron-left"></i></span>
-							<span class="post-nav-info">
-								<h4 class="post-nav-title">{{ .NextInSection.Title }}</h4>
-							</span>
-						</section>
-					</a>
-				{{ end }}
-				{{ if .PrevInSection }}
-					<a class="post-nav-item post-nav-prev" href="{{ .PrevInSection.Permalink }}">
-						<section class="post-nav-teaser">
-							<span class="post-nav-icon"><i class="fa fa-chevron-right"></i></span>
-							<span class="post-nav-info">
-								<h4 class="post-nav-title">{{ .PrevInSection.Title }}</h4>
-							</span>
-						</section>
-					</a>
-				{{ end }}
-				<div class="clear"></div>
-			</nav>
-
-		</div>
-	</article>
+        </div>
+    </article>
 </main>
 
 {{ partial "footer.html" . }}
