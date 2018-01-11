@@ -17,10 +17,13 @@
         {{ end }}
 
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@{{ .Site.Params.author.twitter }}" />
-        <meta name="twitter:creator" content="@{{ .Site.Params.author.twitter }}" />
+        <meta name="twitter:site" content="@{{ .Site.Params.twitter }}" />
+        <meta name="twitter:creator" content="@{{ .Site.Params.twitter }}" />
         <meta name="twitter:title" content="{{ .Title }}" />
-        <meta name="twitter:description" content="{{ .Description }}" />
+        {{ if .Params.image }}
+          <meta name="twitter:image" content="{{ $.Site.BaseURL }}images/{{ .Params.image }}" />
+        {{ end }}
+        <meta name="twitter:description" content="{{ .Summary }}" />
         <meta name="twitter:url" content="{{ .Permalink }}" />
     {{ else }}
         <meta property="og:type" content="website" />
