@@ -1891,6 +1891,125 @@ body {
   }
 }
 
+/* ==========================================================================
+   Author Cards
+   ========================================================================== */
+
+.author-card {
+  margin-bottom: 40px;
+  position: relative;
+
+  .card {
+    min-height: 100px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+
+    &:after {
+      content: '';
+      display: block;
+      background: $color-primary-active;
+      position: absolute;
+
+      @media only screen and (min-width: $breakpoint-tablet) {
+        width: 250px;
+        height: 450px;
+        transform: rotate(-30deg);
+        top: -24px;
+        left: -58px;
+      }
+
+      @media only screen and (max-width: $breakpoint-tablet) {
+        width: 80px;
+        height: 200px;
+        transform: rotate(-55deg);
+        top: -80px;
+        right: 0px;
+      }
+    }
+
+    .first-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      z-index: 2;
+      position: relative;
+
+      img {
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        margin: 25px 25px 70px 25px;
+        @media only screen and (max-width: $breakpoint-tablet) {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          width: 60px;
+          height: 60px;
+          margin: 0;
+        }
+      }
+
+      .profile {
+        padding: 0px 20px;
+        @media only screen and (max-width: $breakpoint-tablet) {
+          padding: 10px 20px;
+        }
+
+        h1 {
+          font-size: 1.8em;
+          margin-top: 0.5em;
+        }
+
+        h3 {
+          font-size: 1.2em;
+          color: $color-primary-active;
+          font-style: italic;
+          margin-top: 1em;
+          margin-left: 0.05em;
+        }
+
+        p.bio {
+          padding: 0;
+          margin: 1.5em auto;
+        }
+      }
+    }
+  }
+
+  .social-profiles {
+    @media only screen and (min-width: $breakpoint-tablet) {
+      text-align: center;
+      position: absolute;
+      z-index: 100;
+      width: 250px;
+      left: 0;
+      top: 245px;
+    }
+
+    a {
+      font-size: 1.5em;
+      margin: 0px 6px;
+      border-bottom: none;
+      i {
+        color: white;
+      }
+    }
+
+    @media only screen and (max-width: $breakpoint-tablet) {
+      margin: -15px 0px 15px 20px;
+
+      a {
+        i {
+          color: black;
+        }
+      }
+    }
+  }
+}
 
 /*******************************************************************************
  * Preloader
