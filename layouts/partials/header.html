@@ -37,6 +37,10 @@
         {{ range .Site.Params.customCSS }}
             <link rel="stylesheet" href="{{ $.Site.BaseURL }}{{ . }}">
         {{ end }}
+        {{ if $.Site.Params.logo }}
+            <link rel="shortcut icon" href="{{ $.Site.Params.icon }}" />
+        {{ end }}
+
 
     {{ if .Description }}
         <meta name="description" content="{{ .Description }}" />
