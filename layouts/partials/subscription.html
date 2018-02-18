@@ -1,0 +1,19 @@
+{{ if .Site.Menus.subscription }}
+<div id="subscription" data-target="subscription">
+    <div class="menu-header">
+        <span class="menu-label">Suscríbete</span>
+        <a class="menu-close" data-action="subscription" data-target="subscription"></a>
+    </div>
+
+    <div class="menu-list">
+        {{ range .Site.Menus.subscription }}
+        {{ $currentNode := . }}
+        <li class="menu-list-item">
+            {{ .Pre }}
+            <a target="_blank" href="{{ .URL }}">{{ .Name }}</a>
+        </li>
+        {{ end }}
+    </div>
+
+</div>
+{{ end }}

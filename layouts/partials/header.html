@@ -17,10 +17,13 @@
         {{ end }}
 
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@{{ .Site.Params.author.twitter }}" />
-        <meta name="twitter:creator" content="@{{ .Site.Params.author.twitter }}" />
+        <meta name="twitter:site" content="@{{ .Site.Params.twitter }}" />
+        <meta name="twitter:creator" content="@{{ .Site.Params.twitter }}" />
         <meta name="twitter:title" content="{{ .Title }}" />
-        <meta name="twitter:description" content="{{ .Description }}" />
+        {{ if .Params.image }}
+          <meta name="twitter:image" content="{{ $.Site.BaseURL }}images/{{ .Params.image }}" />
+        {{ end }}
+        <meta name="twitter:description" content="{{ .Summary }}" />
         <meta name="twitter:url" content="{{ .Permalink }}" />
     {{ else }}
         <meta property="og:type" content="website" />
@@ -28,8 +31,16 @@
 
         <title>{{ if ne .URL "/" }} {{ .Title }} &middot; {{ end }} {{ .Site.Title }}</title>
 
-        <link rel="preload" href="{{ .Site.BaseURL }}js/main.js" as="script" />
-        <link rel="preload" href="{{ .Site.BaseURL }}css/main.css" as="style" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="preload" href="/js/main.js" as="script" />
+        <link rel="preload" href="/css/main.css" as="style" />
+        {{ range .Site.Params.customCSS }}
+            <link rel="stylesheet" href="{{ $.Site.BaseURL }}{{ . }}">
+        {{ end }}
+        {{ if $.Site.Params.logo }}
+            <link rel="shortcut icon" href="{{ $.Site.Params.icon }}" />
+        {{ end }}
+
 
     {{ if .Description }}
         <meta name="description" content="{{ .Description }}" />
@@ -134,6 +145,28 @@
 
     {{ partial "criticalpath.html" . }}
 
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+    <script>
+    window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+    "palette": {
+        "popup": {
+        "background": "#222222"
+        },
+        "button": {
+        "background": "#19a0d7"
+        }
+    },
+    "content": {
+        "message": "{{ .Site.Params.cookiesNoticeMessage }}",
+        "dismiss": "Entendido",
+        "link": "Política de cookies",
+        "href": "{{ .Site.Params.cookiesNoticePage}}"
+    }
+    })});
+    </script>
+
     </head>
     <body class="home-template">
       <div id="loader-wrapper">
@@ -143,23 +176,35 @@
         <div id="ajax-container">
           <nav id="nav" class="nav">
             <div class="nav-logo">
-              <a href="{{ .Site.BaseURL }}">
-      			  {{ if .Site.Params.logo }}
-      			  	<img src="{{ .Site.Params.logo }}" alt="Logo"/>
-      			  {{ else if .Site.Params.author.gravatarHash }}
-      				  <img src="https://www.gravatar.com/avatar/{{ .Site.Params.author.gravatarHash }}.png?s=32" alt="Logo"/>
-      			  {{ end }}
+               <a href="{{ .Site.BaseURL }}">
+                  {{ if .Site.Params.logo }}
+                    <img src="{{ .Site.Params.logo }}" alt="Logo"/>
+                  {{ end }}
               </a>
             </div>
-            <div class="nav-menu">
-              <a class="rss" href="{{.RSSLink}}">
-                <i class="icon-rss"></i>
-              </a>
-                {{ if .IsPage }}
-                <a class="menu" data-action="toc" data-target="toc"><i class="icon-location"></i></a>
+            <div id="main-menu" class="nav-menu">
+              {{ if .Site.Menus.subscription }}
+                <a class="menu subscription" data-action="subscription"
+                    data-target="subscription" title="Suscríbete al Podcast">Suscríbete</a>
+              {{ end }}
+              <a class="nav-social" target="_blank" href="https://twitter.com/{{ .Site.Params.twitter }}" title="Entre Dev Y Ops en Twitter"><i class="fa fa-twitter"></i></a>
+              <a class="nav-social" target="_blank" href="https://github.com/{{ .Site.Params.github }}" title="Entre Dev Y Ops en GitHub"><i class="fa fa-github"></i></a>
+              <a id="search-button" onclick="$('#search-form').toggle();" title="Buscar"><i class="fa fa-search"></i></a>
+              <form id="search-form" method="get" role="search" action="https://google.es/search">
+                <input type="hidden" name="as_sitesearch" value="{{ .Site.BaseURL }}">
+                <input type="text" name="q" maxlength="255" placeholder="Buscar..." class="form-control">
+                <input type="submit" value="Buscar">
+              </form>
+              {{ if .IsPage }}
+                {{ if .Params.showToc }}
+                    {{ if .TableOfContents }}
+                        <a class="menu" data-action="toc" data-target="toc" title="Tabla de contenidos"><i class="fa fa-location-arrow"></i></a>
+                    {{ end }}
                 {{ end }}
-                {{ if .Site.Menus.main }}
-                <a class="menu" data-action="menu" data-target="menu"><i class="icon-menu"></i></a>
-                {{ end }}
+              {{ end }}
+              {{ if .Site.Menus.main }}
+                <a id="main-menu-button" class="menu" data-action="menu" data-target="menu"
+                    title="Menú"><i class="fa fa-navicon"></i></a>
+              {{ end }}
             </div>
           </nav>
