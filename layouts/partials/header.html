@@ -167,8 +167,9 @@
                 <a class="menu subscription" data-action="subscription"
                    data-target="subscription" title="Suscríbete al Podcast">Suscríbete</a>
                 {{ end }}
-                <a class="nav-social" target="_blank" href="https://twitter.com/{{ .Site.Params.twitter }}" title="Entre Dev Y Ops en Twitter"><i class="fa fa-twitter"></i></a>
-                <a class="nav-social" target="_blank" href="https://github.com/{{ .Site.Params.github }}" title="Entre Dev Y Ops en GitHub"><i class="fa fa-github"></i></a>
+                {{ if .Site.Params.instagram }}
+                    <a class="nav-social" target="_blank" href="https://instagram.com/{{ .Site.Params.instagram }}" title="{{ .Site.Title }} on Instagram"><i class="fa fa-instagram"></i></a>
+                {{ end }}
                 <a id="search-button" onclick="$('#search-form').toggle();" title="Buscar"><i class="fa fa-search"></i></a>
                 <form id="search-form" method="get" role="search" action="https://google.es/search">
                     <input type="hidden" name="as_sitesearch" value="{{ .Site.BaseURL }}">
