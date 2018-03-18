@@ -1,18 +1,8 @@
                 <div id="body-class" style="display: none;"></div>
                 <footer id="footer">
                     <section class="credits">
-                        {{ if .Site.Params.license }}
-                        <span class="credits-license"><i class="fa
-                                fa-copyright"></i> 2013-{{ now.Year }} {{ .Site.Title }}, licencia {{ htmlUnescape .Site.Params.license | safeHTML }}
-                        {{ end }}
-                        {{ if .Site.Params.cookiesNoticePage }}
-                        — <a href="{{ .Site.Params.cookiesNoticePage }}">Política de cookies</a>
-                        {{ end }}
+                        <span class="credits-license"><i class="fa fa-copyright"></i>{{ now.Year }} {{ .Site.Title }}
                     </span>
-                    <span class="credits-software">Publicado con
-                        <a href="http://gohugo.io" target="_blank" rel="nofollow">Hugo</a>,
-                        tema basado en <a href="https://github.com/zenithar/hugo-theme-bleak" target="_blank" rel="nofollow">Bleak</a>
-                        por <a href="http://zutrinken.com" target="_blank" rel="nofollow">zutrinken</a></span>
                     </section>
                 </footer>
                 {{ partial "subscription.html" . }}
