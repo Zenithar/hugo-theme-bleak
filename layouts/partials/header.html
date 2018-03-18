@@ -171,10 +171,10 @@
                     <a class="nav-social" target="_blank" href="https://instagram.com/{{ .Site.Params.instagram }}" title="{{ .Site.Title }} on Instagram"><i class="fa fa-instagram"></i></a>
                 {{ end }}
                 <a id="search-button" onclick="$('#search-form').toggle();" title="Buscar"><i class="fa fa-search"></i></a>
-                <form id="search-form" method="get" role="search" action="https://google.es/search">
+                <form id="search-form" method="get" role="search" action="https://google.com/search">
                     <input type="hidden" name="as_sitesearch" value="{{ .Site.BaseURL }}">
-                    <input type="text" name="q" maxlength="255" placeholder="Buscar..." class="form-control">
-                    <input type="submit" value="Buscar">
+                    <input type="text" name="q" maxlength="255" placeholder="Search..." class="form-control">
+                    <input type="submit" value="Search">
                 </form>
                 {{ if .IsPage }}
                 {{ if .Params.showToc }}
