@@ -1,77 +1,77 @@
 <!DOCTYPE html>
 <html lang="{{.Site.LanguageCode}}">
 
-    <head>
+<head>
 
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        <meta property="og:title" content="{{ if ne .URL "/" }} {{ .Title }} &middot; {{ end }} {{ .Site.Title }}" />
-        <meta property="og:site_name" content="{{ .Site.Title }}" />
-        <meta property="og:url" content="{{ .Permalink }}" />
+    <meta property="og:title" content="{{ if ne .URL "/" }} {{ .Title }} &middot; {{ end }} {{ .Site.Title }}" />
+    <meta property="og:site_name" content="{{ .Site.Title }}" />
+    <meta property="og:url" content="{{ .Permalink }}" />
 
     {{ if .IsPage }}
-        <meta property="og:type" content="article" />
-        <meta property="og:article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}" />
-        {{ range .Params.tags }}<meta property="og:article:tag" content="{{ . }}" />
-        {{ end }}
-
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@{{ .Site.Params.twitter }}" />
-        <meta name="twitter:creator" content="@{{ .Site.Params.twitter }}" />
-        <meta name="twitter:title" content="{{ .Title }}" />
-        {{ if .Params.image }}
-          <meta name="twitter:image" content="{{ $.Site.BaseURL }}images/{{ .Params.image }}" />
-        {{ end }}
-        <meta name="twitter:description" content="{{ .Summary }}" />
-        <meta name="twitter:url" content="{{ .Permalink }}" />
-    {{ else }}
-        <meta property="og:type" content="website" />
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}" />
+    {{ range .Params.tags }}<meta property="og:article:tag" content="{{ . }}" />
     {{ end }}
 
-        <title>{{ if ne .URL "/" }} {{ .Title }} &middot; {{ end }} {{ .Site.Title }}</title>
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@{{ .Site.Params.twitter }}" />
+    <meta name="twitter:creator" content="@{{ .Site.Params.twitter }}" />
+    <meta name="twitter:title" content="{{ .Title }}" />
+    {{ if .Params.image }}
+    <meta name="twitter:image" content="{{ $.Site.BaseURL }}images/{{ .Params.image }}" />
+    {{ end }}
+    <meta name="twitter:description" content="{{ .Summary }}" />
+    <meta name="twitter:url" content="{{ .Permalink }}" />
+    {{ else }}
+    <meta property="og:type" content="website" />
+    {{ end }}
 
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-        <link rel="preload" href="/js/main.js" as="script" />
-        <link rel="preload" href="/css/main.css" as="style" />
-        {{ range .Site.Params.customCSS }}
-            <link rel="stylesheet" href="{{ $.Site.BaseURL }}{{ . }}">
-        {{ end }}
-        {{ if $.Site.Params.logo }}
-            <link rel="shortcut icon" href="{{ $.Site.Params.icon }}" />
-        {{ end }}
+    <title>{{ if ne .URL "/" }} {{ .Title }} &middot; {{ end }} {{ .Site.Title }}</title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="preload" href="/js/main.js" as="script" />
+    <link rel="preload" href="/css/main.css" as="style" />
+    {{ range .Site.Params.customCSS }}
+    <link rel="stylesheet" href="{{ $.Site.BaseURL }}{{ . }}">
+    {{ end }}
+    {{ if $.Site.Params.logo }}
+    <link rel="shortcut icon" href="{{ $.Site.Params.icon }}" />
+    {{ end }}
 
 
     {{ if .Description }}
-        <meta name="description" content="{{ .Description }}" />
+    <meta name="description" content="{{ .Description }}" />
     {{ else }}
-        <meta name="description" content="{{ .Site.Params.description }}" />
+    <meta name="description" content="{{ .Site.Params.description }}" />
     {{ end }}
 
     {{ if ne .Site.Params.domainVerification "" }}
-        <meta name="p:domain_verify" content="{{ .Site.Params.domainVerification }}"/>
+    <meta name="p:domain_verify" content="{{ .Site.Params.domainVerification }}"/>
     {{ end }}
 
-        <meta name="HandheldFriendly" content="True" />
-        <meta name="MobileOptimized" content="320" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
     {{ if ne .URL "/" }}
-        <link href="{{ .Site.BaseURL }}index.xml" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+    <link href="{{ .Site.BaseURL }}index.xml" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
     {{ end }}
 
     {{if .IsNode}}
-        <link href="{{.RSSLink}}" rel="alternate" type="application/rss+xml" title="{{ if ne .URL "/" }}{{ .Title }} &middot; {{ end }}{{ .Site.Title }}" />
+    <link href="{{.RSSLink}}" rel="alternate" type="application/rss+xml" title="{{ if ne .URL "/" }}{{ .Title }} &middot; {{ end }}{{ .Site.Title }}" />
     {{end}}
-        <link rel="canonical" href="{{ .Permalink }}" />
+    <link rel="canonical" href="{{ .Permalink }}" />
 
-{{ if .IsPage }}
+    {{ if .IsPage }}
     <script type="application/ld+json">
     {
         "@context": "http://schema.org",
@@ -123,66 +123,66 @@
         {{ if .Params.tags }}"keywords": {{ .Params.tags | jsonify }} {{ end }}
     }
     </script>
-{{ end }}
+    {{ end }}
 
     {{ if ne .Params.comments false}}
     <script type="text/javascript">
-    {{ $doc := . }}
-    {{ with .Site.Params.disqus }}
-      var disqus_shortname = '{{ . }}';
-      var disqus_identifier = '{{if isset $doc.Params "disqus_identifier" }}{{ index $doc.Params "disqus_identifier" }}{{ else }}{{ $doc.Permalink }}{{end}}';
-      var disqus_title = '{{if isset $doc.Params "disqus_title" }}{{ index $doc.Params "disqus_title" }}{{ else }}{{ $doc.Title }}{{end}}';
-      var disqus_url = '{{if isset $doc.Params "disqus_url" }}{{ index $doc.Params "disqus_url" | html  }}{{ else }}{{ $doc.Permalink }}{{end}}';
-    {{ end }}
+        {{ $doc := . }}
+        {{ with .Site.Params.disqus }}
+        var disqus_shortname = '{{ . }}';
+        var disqus_identifier = '{{if isset $doc.Params "disqus_identifier" }}{{ index $doc.Params "disqus_identifier" }}{{ else }}{{ $doc.Permalink }}{{end}}';
+        var disqus_title = '{{if isset $doc.Params "disqus_title" }}{{ index $doc.Params "disqus_title" }}{{ else }}{{ $doc.Title }}{{end}}';
+        var disqus_url = '{{if isset $doc.Params "disqus_url" }}{{ index $doc.Params "disqus_url" | html  }}{{ else }}{{ $doc.Permalink }}{{end}}';
+        {{ end }}
     </script>
     {{ end }}
 
     <script type="text/javascript">
-      var config = {
-        baseUrl: "{{ .Site.BaseURL }}"
-      };
+        var config = {
+            baseUrl: "{{ .Site.BaseURL }}"
+        };
     </script>
 
     {{ partial "criticalpath.html" . }}
 
-    </head>
-    <body class="home-template">
-      <div id="loader-wrapper">
-        <div id="loader"></div>
-      </div>
-      <section id="wrapper" style="display: none;">
-        <div id="ajax-container">
-          <nav id="nav" class="nav">
+</head>
+<body class="home-template">
+<div id="loader-wrapper">
+    <div id="loader"></div>
+</div>
+<section id="wrapper" style="display: none;">
+    <div id="ajax-container">
+        <nav id="nav" class="nav">
             <div class="nav-logo">
-               <a href="{{ .Site.BaseURL }}">
-                  {{ if .Site.Params.logo }}
+                <a href="{{ .Site.BaseURL }}">
+                    {{ if .Site.Params.logo }}
                     <img src="{{ .Site.Params.logo }}" alt="Logo"/>
-                  {{ end }}
-              </a>
+                    {{ end }}
+                </a>
             </div>
             <div id="main-menu" class="nav-menu">
-              {{ if .Site.Menus.subscription }}
+                {{ if .Site.Menus.subscription }}
                 <a class="menu subscription" data-action="subscription"
-                    data-target="subscription" title="Suscríbete al Podcast">Suscríbete</a>
-              {{ end }}
-              <a class="nav-social" target="_blank" href="https://twitter.com/{{ .Site.Params.twitter }}" title="Entre Dev Y Ops en Twitter"><i class="fa fa-twitter"></i></a>
-              <a class="nav-social" target="_blank" href="https://github.com/{{ .Site.Params.github }}" title="Entre Dev Y Ops en GitHub"><i class="fa fa-github"></i></a>
-              <a id="search-button" onclick="$('#search-form').toggle();" title="Buscar"><i class="fa fa-search"></i></a>
-              <form id="search-form" method="get" role="search" action="https://google.es/search">
-                <input type="hidden" name="as_sitesearch" value="{{ .Site.BaseURL }}">
-                <input type="text" name="q" maxlength="255" placeholder="Buscar..." class="form-control">
-                <input type="submit" value="Buscar">
-              </form>
-              {{ if .IsPage }}
-                {{ if .Params.showToc }}
-                    {{ if .TableOfContents }}
-                        <a class="menu" data-action="toc" data-target="toc" title="Tabla de contenidos"><i class="fa fa-location-arrow"></i></a>
-                    {{ end }}
+                   data-target="subscription" title="Suscríbete al Podcast">Suscríbete</a>
                 {{ end }}
-              {{ end }}
-              {{ if .Site.Menus.main }}
+                <a class="nav-social" target="_blank" href="https://twitter.com/{{ .Site.Params.twitter }}" title="Entre Dev Y Ops en Twitter"><i class="fa fa-twitter"></i></a>
+                <a class="nav-social" target="_blank" href="https://github.com/{{ .Site.Params.github }}" title="Entre Dev Y Ops en GitHub"><i class="fa fa-github"></i></a>
+                <a id="search-button" onclick="$('#search-form').toggle();" title="Buscar"><i class="fa fa-search"></i></a>
+                <form id="search-form" method="get" role="search" action="https://google.es/search">
+                    <input type="hidden" name="as_sitesearch" value="{{ .Site.BaseURL }}">
+                    <input type="text" name="q" maxlength="255" placeholder="Buscar..." class="form-control">
+                    <input type="submit" value="Buscar">
+                </form>
+                {{ if .IsPage }}
+                {{ if .Params.showToc }}
+                {{ if .TableOfContents }}
+                <a class="menu" data-action="toc" data-target="toc" title="Tabla de contenidos"><i class="fa fa-location-arrow"></i></a>
+                {{ end }}
+                {{ end }}
+                {{ end }}
+                {{ if .Site.Menus.main }}
                 <a id="main-menu-button" class="menu" data-action="menu" data-target="menu"
-                    title="Menú"><i class="fa fa-navicon"></i></a>
-              {{ end }}
+                   title="Menú"><i class="fa fa-navicon"></i></a>
+                {{ end }}
             </div>
-          </nav>
+        </nav>
