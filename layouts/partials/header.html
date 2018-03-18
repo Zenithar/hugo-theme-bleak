@@ -157,6 +157,8 @@
                 <a href="{{ .Site.BaseURL }}">
                     {{ if .Site.Params.logo }}
                     <img src="{{ .Site.Params.logo }}" alt="Logo"/>
+                    {{ else }}
+                    {{ .Site.Title }}
                     {{ end }}
                 </a>
             </div>
