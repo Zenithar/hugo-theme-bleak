@@ -145,28 +145,6 @@
 
     {{ partial "criticalpath.html" . }}
 
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
-    <script>
-    window.addEventListener("load", function(){
-    window.cookieconsent.initialise({
-    "palette": {
-        "popup": {
-        "background": "#222222"
-        },
-        "button": {
-        "background": "#19a0d7"
-        }
-    },
-    "content": {
-        "message": "{{ .Site.Params.cookiesNoticeMessage }}",
-        "dismiss": "Entendido",
-        "link": "Política de cookies",
-        "href": "{{ .Site.Params.cookiesNoticePage}}"
-    }
-    })});
-    </script>
-
     </head>
     <body class="home-template">
       <div id="loader-wrapper">
