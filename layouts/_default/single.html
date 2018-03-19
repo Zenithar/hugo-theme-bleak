@@ -37,11 +37,11 @@
                   </div>
                 {{ if ne .Type "page" }}
                     <div class="post-share">
+                        <a class="fa fa-reddit-alien" href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false">
+                            <span>Reddit</span>
+                        </a>
                         <a class="fa fa-twitter" href="https://twitter.com/share?text={{ .Title }}&url={{ .Permalink }}" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                             <span>Twitter</span>
-                        </a>
-                        <a class="fa fa-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ .Permalink }}&title={{ .Title }}&summary={{ .Summary }}" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=550');return false;">
-                            <span>LinkedIn</span>
                         </a>
                     </div>
             {{ end }}
