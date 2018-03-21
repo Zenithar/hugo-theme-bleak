@@ -1,22 +1,20 @@
 {{ if .Params.featured }}
 <article class="{{ .Section }} featured">
 {{ else }}
-<article class="{{ .Section }}">
+<article class="post {{ .Section }}">
 {{ end }}
 	<div class="inner">
 		<a class="post-link" href="{{ .Permalink }}"></a>
 		{{ if .Params.image }}
 		<figure class="post-image">
-			<a href="{{ .Permalink }}"><img src="{{ .Site.BaseURL }}{{ .Params.image }}" alt="" /></a>
+			<a href="{{ .Permalink }}"><img src="/images/{{ .Params.image }}" alt="" /></a>
 		</figure>
 		{{ end }}
 		<span class="post-meta">
 			<span class="post-date">{{ .Date.Format "2 Jan 2006" }}</span>
 		</span>
 		<h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-		{{ if .Description }}
-		<p class="post-excerpt">{{ .Description }}&hellip;</p>
-		{{ end }}
-		<span class="post-more"><a href="{{ .Permalink }}">Read More <i class="icon-arrow-right"></i></a></span>
+		<p class="post-excerpt">{{ .Summary }}</p>
+		<span class="post-more"><a href="{{ .Permalink }}">Read more <i class="fa fa-angle-right"></i></a></span>
 	</div>
 </article>

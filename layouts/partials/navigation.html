@@ -1,7 +1,7 @@
 {{ if .Site.Menus.main }}
 <div id="menu" data-target="menu">
     <div class="menu-header">
-        <span class="menu-label">Menu</span>
+        <span class="menu-label">Menú</span>
         <a class="menu-close" data-action="menu" data-target="menu"></a>
     </div>
 
@@ -13,6 +13,10 @@
             <a class="home current js-ajax-link" href="{{ .URL }}">{{ .Name }}</a>
         </li>
         {{ end }}
+        <li class="menu-list-item menu-list-social">
+            <a href="https://twitter.com/{{ .Site.Params.twitter }}" title="Entre Dev Y Ops en Twitter"><i class="fa fa-twitter"></i></a>
+            <a href="https://github.com/{{ .Site.Params.github }}" title="Entre Dev Y Ops en GitHub"><i class="fa fa-github"></i></a>
+        </li>
     </div>
 
 </div>
