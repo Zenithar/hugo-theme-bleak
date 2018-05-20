@@ -1,6 +1,6 @@
 # Bleak
 
-Theme based from Ghost [Bleak](https://github.com/zutrinken/bleak) by [zuntrinken](https://github.com/zutrinken).
+Theme based from Ghost [Bleak](https://github.com/zutrinken/bleak) by [zutrinken](https://github.com/zutrinken).
 
 ## Index view
 
