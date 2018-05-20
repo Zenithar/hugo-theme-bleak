@@ -14,7 +14,7 @@
             </div>
         </section>
 
-    <script async src="/js/main.js"></script>
+    <script async src="{{ .Site.BaseURL }}/js/main.js"></script>
 {{ if .Site.Params.googleAnalyticsUserID }}
     {{with .Site.Params.googleAnalyticsUserID }}
     <script>
@@ -42,6 +42,6 @@
     {{ end }}
 {{ end }}
 
-  <noscript><link rel="stylesheet" href="/css/main.css"></noscript>
+  <noscript><link rel="stylesheet" href="{{ .Site.BaseURL }}/css/main.css"></noscript>
 </body>
 </html>
