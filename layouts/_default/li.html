@@ -7,7 +7,7 @@
 		<a class="post-link" href="{{ .Permalink }}"></a>
 		{{ if .Params.image }}
 		<figure class="post-image">
-			<a href="{{ .Permalink }}"><img src="/images/{{ .Params.image }}" alt="" /></a>
+			<a href="{{ .Permalink }}"><img src="{{ .Site.BaseURL }}/images/{{ .Params.image }}" alt="" /></a>
 		</figure>
 		{{ end }}
 		<span class="post-meta">
