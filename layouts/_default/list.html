@@ -7,7 +7,7 @@
 		</a>
 	</div>
 	{{ if .Site.Params.cover }}
-	<div class="header-cover" style="background-image: url({{ .Site.Params.cover }})"></div>
+	<div class="header-cover" style="background-image: url({{ .Site.BaseURL }}/{{ .Site.Params.cover }})"></div>
 	{{ end }}
 </header>
 

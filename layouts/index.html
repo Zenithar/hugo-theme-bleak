@@ -10,7 +10,7 @@
 			</a>
 		</div>
 		{{ if .Site.Params.cover }}
-		<div class="header-cover blured-image" style="background-color: #19a0d7; background-image: url(/images/cover.low.jpg)" data-src="{{ .Site.Params.cover }}"></div>
+		<div class="header-cover blured-image" style="background-color: #19a0d7; background-image: url(/images/cover.low.jpg)" data-src="{{ .Site.BaseURL }}/{{ .Site.Params.cover }}"></div>
 		{{ end }}
 	</header>
 
