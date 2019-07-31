@@ -18,7 +18,7 @@
     "grunt-contrib-watch": "1.0.0",
     "grunt-postcss": "0.8.0",
     "grunt-sass": "2.0.0",
-    "load-grunt-tasks": "3.5.2"
+    "load-grunt-tasks": "5.1.0"
   },
   "dependencies": {
     "@bower_components/desandro-matches-selector": "desandro/matches-selector#^2.0.0",
