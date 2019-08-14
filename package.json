@@ -17,7 +17,7 @@
     "grunt-contrib-uglify": "2.2.0",
     "grunt-contrib-watch": "1.0.0",
     "grunt-postcss": "0.8.0",
-    "grunt-sass": "2.0.0",
+    "grunt-sass": "3.1.0",
     "load-grunt-tasks": "5.1.0"
   },
   "dependencies": {
